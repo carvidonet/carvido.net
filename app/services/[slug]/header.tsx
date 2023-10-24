@@ -54,7 +54,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
 					<div className="flex justify-between gap-8">
-						<span
+						{/*<span
 							title="View counter for this page"
 							className={`duration-200 hover:font-medium flex items-center gap-1 ${
 								isIntersecting
@@ -84,11 +84,11 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 										: "text-zinc-600 hover:text-zinc-900"
 								} `}
 							/>
-						</Link>
+						</Link> */}
 					</div>
 
 					<Link
-						href="/projects"
+						href="/services"
 						className={`duration-200 hover:font-medium ${
 							isIntersecting
 								? " text-zinc-400 hover:text-zinc-100"
