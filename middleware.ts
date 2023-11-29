@@ -5,7 +5,7 @@ export default function middxleware(request: NextRequest) {
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://beamanalytics.b-cdn.net/beam.min.js ;
-    script-src-elem 'self' https://beamanalytics.b-cdn.net/beam.min.js 'sha256-Q+8tPsjVtiDsjF/Cv8FMOpg2Yg91oKFKDAJat1PPb2g=' 'sha265-ntyubDIImZrqm+Qc2pOmYflh6HiLu1qbJiBTUFMEJIA=';
+    script-src-elem 'self' https://beamanalytics.b-cdn.net/beam.min.js 'sha256-Q+8tPsjVtiDsjF/Cv8FMOpg2Yg91oKFKDAJat1PPb2g=' 'sha256-ntyubDIImZrqm+Qc2pOmYflh6HiLu1qbJiBTUFMEJIA=';
     style-src 'self';
     object-src 'none';
     child-src 'none';
