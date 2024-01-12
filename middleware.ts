@@ -12,7 +12,7 @@ export default function middxleware(request: NextRequest) {
     base-uri 'self';
     connect-src https://lb1.beamanalytics.io/api/log ;
     font-src 'self';
-    frame-src 'self';
+    frame-src 'self' https://calendly.com ;
     img-src 'self';
     manifest-src 'self';
     media-src 'self';
