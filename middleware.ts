@@ -2,7 +2,23 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export default function middxleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
-  const cspHeader = `
+  const cspHeader = (request.nextUrl.host.endsWith("vercel.app") ? `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js ;
+    script-src-elem 'self' https://carvido.net https://www.carvido.net https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js 'sha256-Q+8tPsjVtiDsjF/Cv8FMOpg2Yg91oKFKDAJat1PPb2g=' 'sha256-ntyubDIImZrqm+Qc2pOmYflh6HiLu1qbJiBTUFMEJIA=';
+    style-src 'self';
+    object-src 'none';
+    child-src 'none';
+    base-uri 'self';
+    connect-src https://lb1.beamanalytics.io/api/log https://vercel.live wss://ws-us3.pusher.com;
+    font-src 'self';
+    frame-src 'self' https://calendly.com https://vercel.live;
+    img-src 'self';
+    manifest-src 'self';
+    media-src 'self';
+    worker-src 'none';
+    require-trusted-types-for 'script'
+` : `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://beamanalytics.b-cdn.net/beam.min.js ;
     script-src-elem 'self' https://carvido.net https://www.carvido.net https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js 'sha256-Q+8tPsjVtiDsjF/Cv8FMOpg2Yg91oKFKDAJat1PPb2g=' 'sha256-ntyubDIImZrqm+Qc2pOmYflh6HiLu1qbJiBTUFMEJIA=';
@@ -12,13 +28,13 @@ export default function middxleware(request: NextRequest) {
     base-uri 'self';
     connect-src https://lb1.beamanalytics.io/api/log ;
     font-src 'self';
-    frame-src 'self';
+    frame-src 'self' https://calendly.com ;
     img-src 'self';
     manifest-src 'self';
     media-src 'self';
     worker-src 'none';
     require-trusted-types-for 'script'
-`
+`)
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader
     .replace(/\s{2,}/g, ' ')
