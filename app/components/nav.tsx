@@ -38,14 +38,21 @@ export const Navigation: React.FC = () => {
 							href="/services"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
-							RadicalServices
+							Radical_services
 						</Link> }
-						<Link
+						{ <Link
 							href="/contact"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
 							Contact
 						</Link>
+						}
+						{ <Link
+							href="/book-appointment"
+							className="duration-200 text-zinc-400 hover:text-zinc-100"
+						>
+							Book_an_appointment
+						</Link> }
 					</div>
 
 					<Link
