@@ -19,7 +19,7 @@ export default function middxleware(request: NextRequest) {
 ` : `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' https://beamanalytics.b-cdn.net/beam.min.js;
-    script-src-elem 'self';
+    script-src-elem 'self' 'sha256-JZVJb+SN9vz5sbxXwpp0TBIetN0RVmRmvBPS5S5rvMg=' https://beamanalytics.b-cdn.net/beam.min.js;
     style-src 'self';
     object-src 'none';
     child-src 'none';
