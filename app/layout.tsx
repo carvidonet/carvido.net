@@ -1,8 +1,9 @@
 import "../global.css";
-import { Inter } from "@next/font/google";
-import LocalFont from "@next/font/local";
+import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
+import { headers } from 'next/headers'
 
 export const metadata: Metadata = {
 	title: {
@@ -60,9 +61,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const nonce = headers().get('x-nonce')
   return (
     <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
-      <head>
+      <head nonce="nonce-${nonce}">
         <Analytics />
       </head>
       <body
