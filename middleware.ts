@@ -10,7 +10,7 @@ export default function middxleware(request: NextRequest) {
   base-uri 'self';
   connect-src 'self' https://lb1.beamanalytics.io https://vercel.live wss://ws-us3.pusher.com;
   font-src 'self';
-  frame-src 'self' https://vercel.live;
+  frame-src 'self' https://vercel.live https://calendly.com;
   img-src 'self' https://vercel.com;
   manifest-src 'self';
   media-src 'self';
@@ -24,9 +24,9 @@ export default function middxleware(request: NextRequest) {
     object-src 'none';
     child-src 'none';
     base-uri 'self';
-    connect-src https://lb1.beamanalytics.io/api/log ;
+    connect-src https://lb1.beamanalytics.io/api/log;
     font-src 'self';
-    frame-src 'self' https://calendly.com ;
+    frame-src 'self' https://calendly.com;
     img-src 'self';
     manifest-src 'self';
     media-src 'self';
