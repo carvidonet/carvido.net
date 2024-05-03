@@ -5,7 +5,7 @@ export default function middxleware(request: NextRequest) {
   const cspHeader = (request.nextUrl.host.endsWith("vercel.app") ? `
   default-src 'self';
   script-src 'self' 'nonce-${nonce}' https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js;
-  style-src 'self';
+  style-src 'self' 'sha256-6PybBlUBf2pH44fiFF99sMcmG/1hNoTvzrIl2o1Fo/U=';
   object-src 'none';
   base-uri 'self';
   connect-src 'self' https://lb1.beamanalytics.io https://vercel.live wss://ws-us3.pusher.com;
@@ -20,7 +20,7 @@ export default function middxleware(request: NextRequest) {
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://beamanalytics.b-cdn.net/beam.min.js ;
     script-src-elem 'self' https://carvido.net https://www.carvido.net https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js 'sha256-Q+8tPsjVtiDsjF/Cv8FMOpg2Yg91oKFKDAJat1PPb2g=' 'sha256-ntyubDIImZrqm+Qc2pOmYflh6HiLu1qbJiBTUFMEJIA=';
-    style-src 'self';
+    style-src 'self' 'sha256-6PybBlUBf2pH44fiFF99sMcmG/1hNoTvzrIl2o1Fo/U=';
     object-src 'none';
     child-src 'none';
     base-uri 'self';
