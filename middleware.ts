@@ -18,13 +18,13 @@ export default function middxleware(request: NextRequest) {
   worker-src 'none';
 ` : `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://beamanalytics.b-cdn.net/beam.min.js ;
-    script-src-elem 'self' https://carvido.net https://www.carvido.net https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js 'sha256-Q+8tPsjVtiDsjF/Cv8FMOpg2Yg91oKFKDAJat1PPb2g=' 'sha256-ntyubDIImZrqm+Qc2pOmYflh6HiLu1qbJiBTUFMEJIA=';
-    style-src 'self' 'sha256-6PybBlUBf2pH44fiFF99sMcmG/1hNoTvzrIl2o1Fo/U=';
+    script-src 'self' 'nonce-${nonce}' https://beamanalytics.b-cdn.net/beam.min.js;
+    script-src-elem 'self';
+    style-src 'self';
     object-src 'none';
     child-src 'none';
     base-uri 'self';
-    connect-src https://lb1.beamanalytics.io/api/log;
+    connect-src 'self' https://lb1.beamanalytics.io;
     font-src 'self';
     frame-src 'self' https://calendly.com;
     img-src 'self';
