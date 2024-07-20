@@ -29,12 +29,14 @@ export const Navigation: React.FC = () => {
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
 					<div className="flex justify-between gap-8">
 						{ <Link
+							key="services"
 							href="/services"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
 							Radical_services
 						</Link> }
 						{ <Link
+							key="contact"
 							href="/contact"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
@@ -42,6 +44,7 @@ export const Navigation: React.FC = () => {
 						</Link>
 						}
 						{ <Link
+							key="book-appointment"
 							href="/book-appointment"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
@@ -50,6 +53,7 @@ export const Navigation: React.FC = () => {
 					</div>
 
 					<Link
+						key="arrow"
 						href="/"
 						className="duration-200 text-zinc-300 hover:text-zinc-100"
 					>
