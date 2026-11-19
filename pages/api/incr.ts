@@ -22,7 +22,8 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
   if (!slug) {
     return new NextResponse("Slug not found", { status: 400 });
   }
-  const ip = req.ip;
+  // `req.ip` was removed in Next.js 15; read the client IP from the proxy header.
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   if (ip) {
     // Hash the IP in order to not store it directly in your db.
     const buf = await crypto.subtle.digest(
