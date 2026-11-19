@@ -2,6 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export default function middxleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+  // `next dev` needs a looser policy: React Fast Refresh evaluates code with eval()
+  // and the dev overlay injects inline styles. None of this applies to production.
+  const isDev = process.env.NODE_ENV === 'development'
+  const devEval = isDev ? `'unsafe-eval'` : ''
+  const devInlineStyle = isDev ? `'unsafe-inline'` : ''
+  const trustedTypes = isDev ? '' : `require-trusted-types-for 'script'`
   const cspHeader = (request.nextUrl.host.endsWith("vercel.app") ? `
   default-src 'self';
   script-src 'self' 'nonce-${nonce}' https://beamanalytics.b-cdn.net/beam.min.js https://vercel.live/_next-live/feedback/feedback.js;
@@ -18,9 +24,9 @@ export default function middxleware(request: NextRequest) {
   worker-src 'none';
 ` : `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' https://beamanalytics.b-cdn.net/beam.min.js;
+    script-src 'self' 'nonce-${nonce}' ${devEval} https://beamanalytics.b-cdn.net/beam.min.js;
     script-src-elem 'self' 'nonce-${nonce}' 'sha256-JZVJb+SN9vz5sbxXwpp0TBIetN0RVmRmvBPS5S5rvMg=' https://beamanalytics.b-cdn.net/beam.min.js;
-    style-src 'self';
+    style-src 'self' ${devInlineStyle};
     object-src 'none';
     child-src 'none';
     base-uri 'self';
@@ -31,7 +37,7 @@ export default function middxleware(request: NextRequest) {
     manifest-src 'self';
     media-src 'self';
     worker-src 'none';
-    require-trusted-types-for 'script'
+    ${trustedTypes}
 `)
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader

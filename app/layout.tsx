@@ -61,10 +61,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const nonce = (await headers()).get('x-nonce')
+  // Reading the request headers opts every page into dynamic rendering, which
+  // Next.js needs in order to attach the per-request CSP nonce to its scripts.
+  await headers()
   return (
     <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
-      <head nonce="nonce-${nonce}">
+      <head>
         <Analytics />
       </head>
       <body
