@@ -1,7 +1,12 @@
 import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
 
-const redis = Redis.fromEnv();
+// Page views are only counted when Upstash is configured (e.g. on Vercel).
+// Without the credentials, such as in local development, counting is skipped.
+const redis =
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    ? Redis.fromEnv()
+    : undefined;
 export const config = {
   runtime: "edge",
 };
@@ -22,7 +27,11 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
   if (!slug) {
     return new NextResponse("Slug not found", { status: 400 });
   }
-  const ip = req.ip;
+  if (!redis) {
+    return new NextResponse(null, { status: 202 });
+  }
+  // `req.ip` was removed in Next.js 15; read the client IP from the proxy header.
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   if (ip) {
     // Hash the IP in order to not store it directly in your db.
     const buf = await crypto.subtle.digest(

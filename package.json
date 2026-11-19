@@ -9,17 +9,17 @@
     "fmt": "pnpm rome check . --apply-unsafe && pnpm rome format . --write"
   },
   "dependencies": {
-    "@next/mdx": "^13.5.11",
+    "@next/mdx": "^15.5.29",
     "@upstash/redis": "^1.35.1",
-    "contentlayer2": "^0.4.6",
-    "framer-motion": "^10.18.0",
-    "lucide-react": "^0.284.0",
+    "contentlayer2": "^0.5.8",
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^0.577.0",
     "markdown-wasm": "^1.2.0",
-    "next": "^14.2.30",
-    "next-contentlayer2": "^0.4.6",
-    "react": "^18.3.1",
+    "next": "^15.5.29",
+    "next-contentlayer2": "^0.5.8",
+    "react": "^19.3.1",
     "react-calendly": "^4.4.0",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.3.1",
     "react-wrap-balancer": "^1.1.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.13.2",
@@ -32,8 +32,8 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20.19.9",
-    "@types/react": "^18.3.23",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "postcss-nesting": "^12.1.5",
@@ -41,15 +41,5 @@
     "tailwindcss": "^3.4.17",
     "tailwindcss-debug-screens": "^2.2.1"
   },
-  "pnpm": {
-    "overrides": {
-      "@opentelemetry/api": "1.4.1",
-      "@opentelemetry/core": "1.13.0",
-      "@opentelemetry/exporter-trace-otlp-grpc": "0.39.1",
-      "@opentelemetry/resources": "1.13.0",
-      "@opentelemetry/sdk-trace-base": "1.13.0",
-      "@opentelemetry/sdk-trace-node": "1.13.0",
-      "@opentelemetry/semantic-conventions": "1.13.0"
-    }
-  }
+  "packageManager": "pnpm@12.21.0"
 }
