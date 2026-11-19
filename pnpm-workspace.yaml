@@ -1,0 +1,5 @@
+allowBuilds:
+  contentlayer2: false
+  esbuild: false
+  protobufjs: false
+  rome: false
